@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { randomColor } from '../assets/colors';
+import { colors } from '../assets/colors';
+import { Button } from '@mui/material';
 
 const Content = () => {
 
@@ -28,46 +29,80 @@ const Content = () => {
         // padding: '1rem',
         // background: `linear-gradient(135deg, ${colors.darkcyan}, ${colors.teal})`,
         gridColumn: gridColumn,
-        marginTop: '18rem',
-        marginBottom: '32rem',
+        marginTop: '8rem',
+        marginBottom: '48rem',
     });
 
     return (
         <div className="contentDiv">
 
-            <section className="header" style={getSectionStyle('4 / 10')}>
-                <h1>Hi, My name is Brayden!</h1>
-                <p>Welcome to my portfolio!</p>
+            <section className="header" style={{
+                ...getSectionStyle('3 /11'),
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}>
+                <h1 style={{
+                    fontSize: '8rem',
+                    // background: 'black',
+                    // opacity: '0.75',
+                    padding: '0.5rem 1rem',
+                    borderRadius: '8px',
+                    textShadow: `0 0 20px ${colors.teal}`,
+                    animation: 'slideIn 0.8s ease-out forwards',
+                }}>WELCOME</h1>
+                {/* <h2>My name is Brayden</h2> */}
+                <h2>Scroll to see more!</h2>
             </section>
 
             <section className="hInfo" style={getSectionStyle('6 / 12')}>
-                <h2>About Me</h2>
-                <p>I'm a developer with addictive tendencies to play around with new tech, I specialize in interactive web experiences using React JS.</p>
+                <h2 style={{
+                    borderLeft: '3px solid #00d4d4',
+                    paddingLeft: '1rem',
+                    letterSpacing: '0.05em',
+                }}>About Me</h2>
+                <p style={{ lineHeight: 1.8, opacity: 0.9 }}>
+                    I'm a developer with addictive tendencies to play around with new tech, I specialize in interactive web experiences using React JS.
+                    In my prior roles, I owned front end applications from ideas to release while practicing and using agile methodologies.
+                    I worked heavily on design, thinking carefully about usability across desktop and mobile platforms and always considered a recognizable,
+                    yet intuitive design for our users' experience across the platform.
+                </p>
             </section>
 
             <section className="description" style={getSectionStyle('2 / 8')}>
-            <h2>
-                About this Portfolio
-            </h2>
-                <p>
-                    This portfolio was built using React JS and Three JS with GSAP to showcase my skills and projects. 
-                    In it, you will find dad jokes, flying cats, my hobbies and links to other projects I've worked on.
+                <h2 style={{
+                    borderLeft: '3px solid #00d4d4',
+                    paddingLeft: '1rem',
+                    letterSpacing: '0.05em',
+                }}>About this Portfolio</h2>
+                <p style={{ lineHeight: 1.8, opacity: 0.9 }}>
+                    This portfolio was built using React JS and Three JS with GSAP to showcase my skills and projects.
                 </p>
             </section>
 
             <section className='dad-joke' style={getSectionStyle('7 / 12')}>
-                <h1>Dad joke Dispenser</h1>
-                <p>{dadJoke}</p>
-                <button onClick={fetchJoke} style={{
-                    backgroundColor: 'black',
-                    color: randomColor(),
-                    padding: '0.5rem 1rem',
-                    borderRadius: '4px',
-                    cursor: 'pointer',
-                    fontWeight: 'bold',
-                }}>
+                <h2 style={{
+                    borderLeft: '3px solid #00d4d4',
+                    paddingLeft: '1rem',
+                    letterSpacing: '0.05em',
+                }}>Dad Joke Dispenser</h2>
+                <p style={{ lineHeight: 1.8, opacity: 0.9, minHeight: '3rem' }}>{dadJoke}</p>
+                <Button
+                    variant="outlined"
+                    onClick={fetchJoke}
+                    sx={{
+                        color: 'white',
+                        borderColor: 'white',
+                        fontWeight: 'bold',
+                        '&:hover': {
+                            borderColor: '#00d4d4',
+                            color: '#00d4d4',
+                        }
+                    }}
+                >
                     New Joke
-                </button>
+                </Button>
             </section>
 
             {/* <section className='hobbies' style={getSectionStyle('1 / 13')}>

@@ -5,7 +5,7 @@ import { randomColor } from "../assets/colors";
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import space from '../assets/images/nightsky.jpg';
+import background from '../assets/videos/Space-Background-4K.mp4';
 import earthMesh from '../assets/images/earth.jpg';
 import cosmosMesh from '../assets/images/cosmos.jpg';
 
@@ -44,6 +44,23 @@ const Canvas = () => {
 
         camera.position.setY(0.5)
         camera.position.setZ(5);
+
+        // OLD BACKGROUND METHOD
+
+        // const backgroundTexture = new THREE.TextureLoader().load(background);
+        // scene.background = backgroundTexture;
+
+        const video = document.createElement('video');
+        video.src = background;
+        video.loop = true;
+        video.muted = true;
+        video.playsInline = true;
+        video.play();
+
+        const videoTexture = new THREE.VideoTexture(video);
+        // video was so bright needs color space adjustment
+        videoTexture.colorSpace = THREE.SRGBColorSpace;
+        scene.background = videoTexture;
 
         // LIGHTING
         const pointLight = new THREE.PointLight(0xffffff);
@@ -145,10 +162,28 @@ const Canvas = () => {
             }
         )
 
-        // OLD BACKGROUND METHOD
+        let reactLogoModel = null;
 
-        const spaceTexture = new THREE.TextureLoader().load(space);
-        scene.background = spaceTexture;
+        const reactLogoLoader = new GLTFLoader();
+
+        reactLogoLoader.load('/assets/models/react_logo/scene.gltf',
+            (gltf) => {
+                reactLogoModel = gltf.scene;
+
+                reactLogoModel.position.z = -80;
+                reactLogoModel.position.x = -52;
+                reactLogoModel.scale.set(2.5, 2.5, 2.5);
+                scene.add(reactLogoModel);
+                tl
+                .to(reactLogoModel.position, { x: 12, y: 8, z: -12, duration: 4 }, 'secondPosition')
+                // .to(reactLogoModel.position, { x: 50, y: 50, z: 50, duration: 4 }, '<')
+
+            },
+            undefined,
+            (error) => {
+                console.error('Failed to load React logo model', error)
+            }
+        )
 
 
         // GSAP CONTROLS
@@ -161,7 +196,7 @@ const Canvas = () => {
                 end: "bottom+=3000 top",
                 scrub: 1,
                 scroller: '.outletDiv',
-                markers: true,
+                // markers: true,
             }
         });
 
@@ -172,14 +207,14 @@ const Canvas = () => {
             .to(camera.position, { x: -4, z: 20, duration: 4 })
             .to(earth.position, { x: -24, y: -4, z: 4, duration: 4 }, '<')
             .to(earth.scale, { x: 2, y: 2, z: 2, duration: 4 }, '<')
-            .to(torusKnot.position, { x: 12, y: 8, z: -12, duration: 4 }, '<')
+            .to(torusKnot.position, { x: -12, y: 32, z: -120, duration: 4 }, '<')
 
             // third position
             .addLabel("thirdPosition")
             .to(camera.position, { y: 24, duration: 4 })
             .to(camera.rotation, { x: -1, duration: 4 }, '<')
             .to(earth.position, { x: -50, z: 50, duration: 4 }, '<')
-            .to(torusKnot.position, {x: 50, y: 50, z: 50, duration: 4}, '<')
+            // .to(torusKnot.position, { x: 50, y: 50, z: 50, duration: 4 }, '<')
 
             // fourth position
             .addLabel("fourthPosition")
@@ -201,6 +236,12 @@ const Canvas = () => {
             if (toiletPaperModel) {
                 toiletPaperModel.rotation.x += 0.01;
                 toiletPaperModel.rotation.z += 0.01;
+            }
+
+            // react logo aninmation
+            if (reactLogoModel) {
+                reactLogoModel.rotation.y += 0.01;
+                // reactLogoModel.rotation.z += 0.01;
             }
 
             boxes.forEach(box => {

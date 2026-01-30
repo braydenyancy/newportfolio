@@ -1,8 +1,8 @@
 /* App.css */
 body {
     margin: 0;
-    overflow-y: scroll;
-    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .LayoutDiv {
@@ -14,12 +14,10 @@ body {
 .menubarDiv {
     position: absolute;
     top: 0;
-    height: 8vh;
+    left: 0;
     width: 100vw;
-    background-color: black;
-    border-bottom: solid 4px white;
-    color: white;
-    z-index: 1;
+    z-index: 2;
+    height: 4vh;
 }
 
 .canvasDiv {
@@ -33,12 +31,16 @@ body {
 
 .outletDiv {
     position: absolute;
-    top: 8vh;
+    top: 0;
     width: 100vw;
-    height: 92vh;
+    height: 100vh;
     z-index: 1;
     overflow: auto;
     pointer-events: none;
+}
+
+.outletDiv::-webkit-scrollbar {
+    display: none;
 }
 
 .contentDiv {
@@ -51,27 +53,52 @@ body {
     pointer-events: auto;
 }
 
-.header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+/* KEY FRAMES */
+
+/* Slide in Animation from bottom to top*/
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-h1 {
-    background-color: teal;
-    padding: 1rem;
-    border-radius: 8px;
+
+
+/* Scrollbar styling made with scrollbar.app */
+
+/* 
+body {
+  --sb-track-color: #232e33;
+  --sb-thumb-color: #23543b;
+  --sb-size: 8px;
 }
 
-h2 {
-    background-color: darkcyan;
-    padding: 1rem;
-    border-radius: 8px;
+body::-webkit-scrollbar {
+  width: var(--sb-size)
 }
 
-p {
-    font-weight: bold;
-    background-color: black;
-    padding: 1rem;
-    border-radius: 8px;
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 2px;
 }
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 2px;
+  
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color)
+                     var(--sb-track-color);
+  }
+} */

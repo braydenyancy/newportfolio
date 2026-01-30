@@ -1,53 +1,54 @@
-import { GrDocumentText } from "react-icons/gr";
-import { GrProjects } from "react-icons/gr";
-import { FaHome } from "react-icons/fa";
-import { colors } from "../assets/colors";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useLocation } from "react-router-dom";
+import ArticleIcon from '@mui/icons-material/Article';
+import HomeIcon from '@mui/icons-material/Home';
+import { Tooltip } from '@mui/material';
 
 const MenuBar = () => {
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const isResumePage = location.pathname === '/resume';
 
-    const menuItemStyling = {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        margin: 0,
-        padding: 0,
-        cursor: 'pointer',
-    }
-
-    const menuTextStyling = {
-        margin: 0,
-        padding: 0,
-    }
 
     return (
         <div className='menuItemsDiv' style={{
             display: 'flex',
-            justifyContent: 'space-evenly',
             alignItems: 'center',
+            justifyContent: 'space-between',
             height: '100%',
+            width: '100vw',
+            marginTop: '0.5rem',
+            // borderBottom: 'solid 1px white',
+            // opacity: '0.75',
         }}>
-            <div className='menuItem' style={menuItemStyling} onClick={() => navigate('/')}>
-                <div>
-                    <FaHome size={48} style={{ color: colors.seafoam }} />
+            {isResumePage ? (
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                }}>
+                    <p onClick={() => navigate('/')} style={{
+                        color: 'white',
+                        marginLeft: '2rem',
+                        cursor: 'pointer',
+                    }}>Return home</p>
                 </div>
-                <h4 style={menuTextStyling}>Home</h4>
-            </div>
-            <div className='menuItem' style={menuItemStyling} onClick={() => navigate('/projects')}>
+            ) : (
                 <div>
-                    <GrProjects size={48} style={{ color: colors.teal }} />
+                    <p style={{
+                        color: 'white',
+                        marginLeft: '2rem',
+                    }}>Welcome to my new React x Three.js Portfolio</p>
                 </div>
-                <h4 style={menuTextStyling}>Projects</h4>
-            </div>
-            <div className='menuItem' style={menuItemStyling} onClick={() => navigate('/resume')}>
-                <div>
-                    <GrDocumentText size={48} style={{ color: colors.maroon }} />
-                </div>
-                <h4 style={menuTextStyling}>Resume</h4>
-            </div>
+            )}
+
+            <Tooltip title="Click to see latest resume" arrow>
+                <ArticleIcon onClick={() => navigate('resume')} style={{
+                    color: 'white',
+                    marginRight: '2rem',
+                    cursor: 'pointer',
+                    fontSize: '2rem',
+                }} />
+            </Tooltip>
         </div>
     )
 }
