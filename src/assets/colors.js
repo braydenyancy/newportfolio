@@ -13,3 +13,11 @@ export const colors = {
     rust: '#AE2012',
     maroon: '#9B2226',
 };
+
+const randomColor = () => {
+    const colorValues = Object.values(colors);
+    const randomIndex = Math.floor(Math.random() * colorValues.length);
+    return colorValues[randomIndex];
+}
+
+export { randomColor };
