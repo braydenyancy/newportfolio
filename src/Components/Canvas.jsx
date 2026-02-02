@@ -40,6 +40,7 @@ const Canvas = () => {
             { antialias: true }
         );
         renderer.setSize(width, height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         canvasRef.current.appendChild(renderer.domElement);
 
         camera.position.setY(0.5)
@@ -63,17 +64,17 @@ const Canvas = () => {
         scene.background = videoTexture;
 
         // LIGHTING
-        const pointLight = new THREE.PointLight(0xffffff);
+        const pointLight = new THREE.PointLight(0xffffff, 1.5);
         pointLight.position.set(10, 10, 10);
 
-        const ambientLight = new THREE.AmbientLight(0xffffff);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 2);
 
         scene.add(pointLight, ambientLight);
 
-        const lightHelper = new THREE.PointLightHelper(pointLight);
-        scene.add(lightHelper);
-        const gridHelper = new THREE.GridHelper(500, 50);
-        scene.add(gridHelper);
+        // const lightHelper = new THREE.PointLightHelper(pointLight);
+        // scene.add(lightHelper);
+        // const gridHelper = new THREE.GridHelper(500, 50);
+        // scene.add(gridHelper);
 
         // TORUSKNOT
 
@@ -110,7 +111,7 @@ const Canvas = () => {
             const geometry = new THREE.BoxGeometry(2, 2, 2);
             const material = new THREE.MeshStandardMaterial({
                 color: randomColor(),
-                wireframe: true
+                wireframe: true,
             });
             const box = new THREE.Mesh(geometry, material);
 
@@ -220,6 +221,22 @@ const Canvas = () => {
             .addLabel("fourthPosition")
 
         // ANIMATION LOOP
+
+        // RESIZE HANDLER
+        const handleResize = () => {
+            if (!canvasRef.current) return;
+            
+            const newWidth = canvasRef.current.clientWidth;
+            const newHeight = canvasRef.current.clientHeight;
+            
+            camera.aspect = newWidth / newHeight;
+            camera.updateProjectionMatrix();
+            
+            renderer.setSize(newWidth, newHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        };
+
+        window.addEventListener('resize', handleResize);
 
         const animate = () => {
             requestAnimationFrame(animate);

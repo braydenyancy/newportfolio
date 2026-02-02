@@ -50,8 +50,8 @@ const Content = () => {
                     padding: '0.5rem 1rem',
                     borderRadius: '8px',
                     textShadow: `0 0 20px ${colors.teal}`,
-                    animation: 'slideIn 0.8s ease-out forwards',
-                }}>WELCOME</h1>
+                    animation: 'slideIn 2s ease-out forwards',
+                }}>YANCY</h1>
                 {/* <h2>My name is Brayden</h2> */}
                 <h2>Scroll to see more!</h2>
             </section>

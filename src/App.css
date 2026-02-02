@@ -53,10 +53,15 @@ body {
     pointer-events: auto;
 }
 
+p {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
 
-/* KEY FRAMES */
-
-/* Slide in Animation from bottom to top*/
+@media (max-width: 1024px) {
+    .contentDiv {
+        gap: 0;
+    }
+}
 
 @keyframes slideIn {
     from {
