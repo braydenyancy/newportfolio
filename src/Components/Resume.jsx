@@ -6,7 +6,7 @@ const resumePageStyle = {
     backgroundColor: 'rgba(0, 20, 40, 0.9)',
     color: 'white',
     margin: '2rem auto',
-    padding: '3rem',
+    padding: '1rem',
     borderRadius: '12px',
     lineHeight: 1.7,
 };
