@@ -1,17 +1,17 @@
 import { useEffect, useRef } from "react";
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { randomColor } from "../assets/colors";
+import { randomColor } from "../assets/colors.ts";
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+// import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import background from '../assets/videos/Space-Background-4K.mp4';
 import earthMesh from '../assets/images/earth.jpg';
 import cosmosMesh from '../assets/images/cosmos.jpg';
 
 const Canvas = () => {
 
-    const canvasRef = useRef(null);
+    const canvasRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (!canvasRef.current) return;
@@ -33,7 +33,7 @@ const Canvas = () => {
         const aspect = width / height;
         const near = 0.1;
         const far = 1000;
-        const camera = new THREE.PerspectiveCamera(fov, aspect, near, far)
+        const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 
         // RENDERER
         const renderer = new THREE.WebGLRenderer(
@@ -105,7 +105,7 @@ const Canvas = () => {
 
 
         // RANDOM CUBES
-        const boxes = [];
+        const boxes: THREE.Mesh[] = [];
 
         function addBoxes() {
             const geometry = new THREE.BoxGeometry(2, 2, 2);
@@ -115,7 +115,7 @@ const Canvas = () => {
             });
             const box = new THREE.Mesh(geometry, material);
 
-            const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
+            const [x, y, z] = Array(3).fill(null).map(() => THREE.MathUtils.randFloatSpread(100));
             box.position.set(x, y, z);
             scene.add(box);
             boxes.push(box);
@@ -128,17 +128,17 @@ const Canvas = () => {
             const geometry = new THREE.SphereGeometry(0.25, 24, 24);
             const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
             const star = new THREE.Mesh(geometry, material);
-            const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
+            const [x, y, z] = Array(3).fill(null).map(() => THREE.MathUtils.randFloatSpread(100));
             star.position.set(x, y, z);
             scene.add(star);
         }
 
-        Array(200).fill().forEach(addBoxes);
-        Array(200).fill().forEach(addStars);
+        Array(200).fill(null).forEach(addBoxes);
+        Array(200).fill(null).forEach(addStars);
 
         // LOAD TOILET PAPER DISPENSER MODEL
 
-        let toiletPaperModel = null;
+        let toiletPaperModel: THREE.Group | null = null;
 
         const toiletPaperLoader = new GLTFLoader();
 
@@ -155,7 +155,7 @@ const Canvas = () => {
                 scene.add(toiletPaperModel);
                 tl
                     .to(toiletPaperModel.position, { x: -12, y: 10, z: 4, duration: 4 }, 'thirdPosition')
-                    .to(toiletPaperLoader.position, { x: -12, y: 10, z: -120, duration: 4 }, '<')
+                    .to(toiletPaperModel.position, { x: -12, y: 10, z: -120, duration: 4 }, '<')
             },
             undefined,
             (error) => {
@@ -163,7 +163,7 @@ const Canvas = () => {
             }
         )
 
-        let reactLogoModel = null;
+        let reactLogoModel: THREE.Group | null = null;
 
         const reactLogoLoader = new GLTFLoader();
 

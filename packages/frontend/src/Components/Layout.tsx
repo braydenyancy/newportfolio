@@ -1,7 +1,6 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
-import MenuBar from "./MenuBar";
-import Canvas from "./Canvas";
+import MenuBar from "./MenuBar.tsx";
+import Canvas from "./Canvas.tsx";
 import "../App.css";
 
 const Layout = () => {

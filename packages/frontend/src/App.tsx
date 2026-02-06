@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
-import Layout from './Components/Layout';
-import Content from './Components/Content';
-import Resume from './Components/Resume';
+import Layout from './Components/Layout.tsx';
+import Content from './Components/Content.tsx';
+import Resume from './Components/Resume.tsx';
 
 function App() {
   return (

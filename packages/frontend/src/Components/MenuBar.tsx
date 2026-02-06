@@ -1,6 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import ArticleIcon from '@mui/icons-material/Article';
-import HomeIcon from '@mui/icons-material/Home';
 import { Tooltip } from '@mui/material';
 
 const MenuBar = () => {

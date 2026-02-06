@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
-import { colors } from '../assets/colors';
+import { colors } from '../assets/colors.ts';
 import { Button } from '@mui/material';
+
+interface JokeResponse {
+    joke: string;
+}
 
 const Content = () => {
 
-    const [dadJoke, setDadJoke] = useState("");
+    const [dadJoke, setDadJoke] = useState<string>("");
 
     const fetchJoke = () => {
         fetch("https://icanhazdadjoke.com/", {
@@ -13,7 +17,7 @@ const Content = () => {
             }
         })
             .then(res => res.json())
-            .then(data => {
+            .then((data: JokeResponse) => {
                 setDadJoke(data.joke)
             })
             .catch(error => console.error("Error fetching dad joke", error))
@@ -23,11 +27,7 @@ const Content = () => {
         fetchJoke()
     }, []);
 
-    const getSectionStyle = (gridColumn) => ({
-        // border: `solid 4px white`,
-        // borderRadius: '8px',
-        // padding: '1rem',
-        // background: `linear-gradient(135deg, ${colors.darkcyan}, ${colors.teal})`,
+    const getSectionStyle = (gridColumn: string) => ({
         gridColumn: gridColumn,
         marginTop: '8rem',
         marginBottom: '48rem',
@@ -45,14 +45,11 @@ const Content = () => {
             }}>
                 <h1 style={{
                     fontSize: '8rem',
-                    // background: 'black',
-                    // opacity: '0.75',
                     padding: '0.5rem 1rem',
                     borderRadius: '8px',
                     textShadow: `0 0 20px ${colors.teal}`,
                     animation: 'slideIn 2s ease-out forwards',
                 }}>YANCY</h1>
-                {/* <h2>My name is Brayden</h2> */}
                 <h2>Scroll to see more!</h2>
             </section>
 
@@ -104,22 +101,6 @@ const Content = () => {
                     New Joke
                 </Button>
             </section>
-
-            {/* <section className='hobbies' style={getSectionStyle('1 / 13')}>
-                <h1>My hobbies include...</h1>
-            </section>
-
-            <section className='list' style={getSectionStyle('1 / 13')}>
-                <li>Creating and listening to music!</li>
-            </section>
-
-            <section className='list' style={getSectionStyle('1 / 13')}>
-                <li>Cooking and definitely eating!</li>
-            </section>
-
-            <section className='list' style={getSectionStyle('1 / 13')}>
-                <li>Developing applications and using them.</li>
-            </section> */}
 
         </div>
     )
