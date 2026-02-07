@@ -1,99 +1,77 @@
-import { colors } from '../assets/colors.ts';
-import getSectionStyle from '../styles/styles.tsx';
+import getSectionStyle from './sections.tsx';
 import Jokes from './Jokes.tsx';
+import { useEffect, useState } from 'react';
 
 const Content = () => {
 
-    // const [dadJoke, setDadJoke] = useState<string>("");
+    const [crypticText, setCrypticText] = useState('████████');
 
-    // const fetchJoke = () => {
-    //     fetchRandomJoke()
-    //         .then((data) => setDadJoke(data))
-    //         .catch((error) => console.error('Error fetching joke:', error));
-    // };
+    useEffect(() => {
+        const chars = '█▓▒░▀▄■┼┤┴├─│╬╔╗╚╝╠╣╦╩';
 
-    // useEffect(() => {
-    //     fetchJoke()
-    // }, []);
+        const interval = setInterval(() => {
+            setCrypticText(
+                Array.from({ length: 8 }, () =>
+                    chars[Math.floor(Math.random() * chars.length)]
+                ).join('')
+            );
+        }, 100);
 
-    // const getSectionStyle = (gridColumn: string) => ({
-    //     gridColumn: gridColumn,
-    //     marginTop: '8rem',
-    //     marginBottom: '48rem',
-    // });
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <div className="contentDiv">
 
-            <section className="header" style={{
-                ...getSectionStyle('3 /11'),
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}>
-                <h1 style={{
-                    fontSize: '8rem',
-                    padding: '0.5rem 1rem',
-                    borderRadius: '8px',
-                    textShadow: `0 0 20px ${colors.teal}`,
-                    animation: 'slideIn 2s ease-out forwards',
-                }}>YANCY</h1>
-                <h2>Scroll to see more!</h2>
+            <section className="header" style={getSectionStyle('3 /11')}>
+                <div className="terminal" style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                }}>
+                    <h1 style={{
+                        fontSize: '6rem',
+                        padding: '0.5rem 4rem',
+                        animation: 'slideIn 2s ease-out forwards',
+                    }}>CONFIDENTIAL</h1>
+                    <p>NOTE: This is top secret documentation and contains hazardous information, read at your own risk</p>
+                </div>
             </section>
 
             <section className="hInfo" style={getSectionStyle('6 / 12')}>
-                <h2 style={{
-                    borderLeft: '3px solid #00d4d4',
-                    paddingLeft: '1rem',
-                    letterSpacing: '0.05em',
-                }}>About Me</h2>
-                <p style={{ lineHeight: 1.8, opacity: 0.9 }}>
-                    I'm a developer with addictive tendencies to play around with new tech, I specialize in interactive web experiences using React JS.
-                    In my prior roles, I owned front end applications from ideas to release while practicing and using agile methodologies.
-                    I worked heavily on design, thinking carefully about usability across desktop and mobile platforms and always considered a recognizable,
-                    yet intuitive design for our users' experience across the platform.
-                </p>
+                <div className="terminal">
+                    <h2 style={{
+                        borderLeft: '3px solid #00d4d4',
+                        paddingLeft: '1rem',
+                        letterSpacing: '0.05em',
+                    }}>About</h2>
+                    <p style={{ lineHeight: 1.8, opacity: 0.9 }}>
+                        This developer is highly capable with addictive tendencies to learn all technology, Bra{crypticText}y specializes in interactive web applications using React JS.
+                        In their prior roles, they owned front end applications and designed cloud architectures from ideas to release while practicing and using agile methodologies.
+                        This person of interest works heavily on design, carefully considering usability across all desktop and mobile platforms while always commiting to a recognizable,
+                        yet intuitive design for users.
+                    </p>
+                </div>
             </section>
 
             <section className="description" style={getSectionStyle('2 / 8')}>
-                <h2 style={{
-                    borderLeft: '3px solid #00d4d4',
-                    paddingLeft: '1rem',
-                    letterSpacing: '0.05em',
-                }}>About this Portfolio</h2>
-                <p style={{ lineHeight: 1.8, opacity: 0.9 }}>
-                    This portfolio was built using React JS and Three JS with GSAP to showcase my skills and projects.
-                </p>
+                <div className="terminal">
+                    <h2 style={{
+                        borderLeft: '3px solid #00d4d4',
+                        paddingLeft: '1rem',
+                        letterSpacing: '0.05em',
+                    }}>Confidental</h2>
+                    <p style={{ lineHeight: 1.8, opacity: 0.9 }}>
+                        This portfolio was built using React JS and Three JS with GSAP to showcase my skills and projects.
+                    </p>
+                </div>
             </section>
 
-            <section className='dad-joke' style={getSectionStyle('7 / 12')}>
+            <section className='dad-joke' style={getSectionStyle('6 / 12')}>
                 <Jokes />
             </section>
-
-            {/* <section className='dad-joke' style={getSectionStyle('7 / 12')}>
-                <h2 style={{
-                    borderLeft: '3px solid #00d4d4',
-                    paddingLeft: '1rem',
-                    letterSpacing: '0.05em',
-                }}>Dad Joke Dispenser</h2>
-                <p style={{ lineHeight: 1.8, opacity: 0.9, minHeight: '3rem' }}>{dadJoke}</p>
-                <Button
-                    variant="outlined"
-                    onClick={fetchJoke}
-                    sx={{
-                        color: 'white',
-                        borderColor: 'white',
-                        fontWeight: 'bold',
-                        '&:hover': {
-                            borderColor: '#00d4d4',
-                            color: '#00d4d4',
-                        }
-                    }}
-                >
-                    New Joke
-                </Button>
-            </section> */}
 
         </div>
     )
