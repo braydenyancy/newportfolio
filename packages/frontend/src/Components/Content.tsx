@@ -1,26 +1,16 @@
 import { useEffect, useState } from 'react';
 import { colors } from '../assets/colors.ts';
 import { Button } from '@mui/material';
-
-interface JokeResponse {
-    joke: string;
-}
+import { fetchRandomJoke } from '../api/jokes.ts';
 
 const Content = () => {
 
     const [dadJoke, setDadJoke] = useState<string>("");
 
     const fetchJoke = () => {
-        fetch("https://icanhazdadjoke.com/", {
-            headers: {
-                Accept: 'application/json'
-            }
-        })
-            .then(res => res.json())
-            .then((data: JokeResponse) => {
-                setDadJoke(data.joke)
-            })
-            .catch(error => console.error("Error fetching dad joke", error))
+        fetchRandomJoke()
+            .then((data) => setDadJoke(data))
+            .catch((error) => console.error('Error fetching joke:', error));
     };
 
     useEffect(() => {

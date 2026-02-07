@@ -155,7 +155,7 @@ const Canvas = () => {
                 scene.add(toiletPaperModel);
                 tl
                     .to(toiletPaperModel.position, { x: -12, y: 10, z: 4, duration: 4 }, 'thirdPosition')
-                    .to(toiletPaperModel.position, { x: -12, y: 10, z: -120, duration: 4 }, '<')
+                    // .to(toiletPaperModel.position, { x: -12, y: 10, z: -120, duration: 4 }, '<')
             },
             undefined,
             (error) => {
