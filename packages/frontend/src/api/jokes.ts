@@ -1,9 +1,12 @@
-import { Joke, SavedJoke, SaveJokeRequest } from '@portfolio/shared';
+import { Joke, SavedJoke, SaveJokeRequest } from '@portfolio/shared/types.ts';
 
-const API_URL = import.meta.env.VITE_API_BASE_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const fetchRandomJoke = async (): Promise<Joke> => {
     const res = await fetch(`${API_URL}/api/jokes/random`);
+    if (!res.ok) {
+        throw new Error('Failed to fetch joke');
+    }
     return res.json();
 }
 

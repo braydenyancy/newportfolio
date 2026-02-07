@@ -1,27 +1,26 @@
-import { useEffect, useState } from 'react';
 import { colors } from '../assets/colors.ts';
-import { Button } from '@mui/material';
-import { fetchRandomJoke } from '../api/jokes.ts';
+import getSectionStyle from '../styles/styles.tsx';
+import Jokes from './Jokes.tsx';
 
 const Content = () => {
 
-    const [dadJoke, setDadJoke] = useState<string>("");
+    // const [dadJoke, setDadJoke] = useState<string>("");
 
-    const fetchJoke = () => {
-        fetchRandomJoke()
-            .then((data) => setDadJoke(data))
-            .catch((error) => console.error('Error fetching joke:', error));
-    };
+    // const fetchJoke = () => {
+    //     fetchRandomJoke()
+    //         .then((data) => setDadJoke(data))
+    //         .catch((error) => console.error('Error fetching joke:', error));
+    // };
 
-    useEffect(() => {
-        fetchJoke()
-    }, []);
+    // useEffect(() => {
+    //     fetchJoke()
+    // }, []);
 
-    const getSectionStyle = (gridColumn: string) => ({
-        gridColumn: gridColumn,
-        marginTop: '8rem',
-        marginBottom: '48rem',
-    });
+    // const getSectionStyle = (gridColumn: string) => ({
+    //     gridColumn: gridColumn,
+    //     marginTop: '8rem',
+    //     marginBottom: '48rem',
+    // });
 
     return (
         <div className="contentDiv">
@@ -69,6 +68,10 @@ const Content = () => {
             </section>
 
             <section className='dad-joke' style={getSectionStyle('7 / 12')}>
+                <Jokes />
+            </section>
+
+            {/* <section className='dad-joke' style={getSectionStyle('7 / 12')}>
                 <h2 style={{
                     borderLeft: '3px solid #00d4d4',
                     paddingLeft: '1rem',
@@ -90,7 +93,7 @@ const Content = () => {
                 >
                     New Joke
                 </Button>
-            </section>
+            </section> */}
 
         </div>
     )

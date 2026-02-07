@@ -1,10 +1,11 @@
 {
 	"scripts": {
-		"dev": "pnpm --filter @portfolio/frontend dev",
+		"frontend:dev": "pnpm --filter @portfolio/frontend dev",
 		"build": "pnpm --filter @portfolio/frontend build",
 		"backend:dev": "pnpm --filter @portfolio/backend dev",
 		"db:up": "docker-compose up -d",
 		"db:down": "docker-compose down",
+		"db:studio": "pnpm --filter @portfolio/backend db:studio",
 		"db:generate": "pnpm --filter @portfolio/backend db:generate",
 		"db:migrate": "pnpm --filter @portfolio/backend db:migrate"
   },

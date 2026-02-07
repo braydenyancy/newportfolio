@@ -1,9 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import * as dotenv from 'dotenv';
-import jokesRouter from './routes/jokes';
+import 'dotenv/config';
 
-dotenv.config({ path: "../../.env" });
+import jokesRouter from './routes/jokes';
 
 const app = express();
 const PORT = process.env.PORT;
