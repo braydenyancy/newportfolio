@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 
-import jokesRouter from './routes/jokes';
+import jokesRouter from './routes/jokes.js';
 
 const app = express();
 const PORT = process.env.PORT;

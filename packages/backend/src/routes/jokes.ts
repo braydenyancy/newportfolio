@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { jokes } from '../db/schema';
-import { db } from '../db';
+import { jokes } from '../db/schema.js';
+import { db } from '../db/index.js';
 import { eq } from 'drizzle-orm';
 import type { Joke, SaveJokeRequest, UpdateJokeRequest } from '@portfolio/shared';
 
