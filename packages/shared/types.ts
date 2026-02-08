@@ -16,3 +16,7 @@ export interface SaveJokeRequest {
     content: string;
     externalId: string | null;
 }
+
+export interface UpdateJokeRequest {
+    content: string;
+}

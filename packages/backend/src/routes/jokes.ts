@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { jokes } from '../db/schema';
 import { db } from '../db';
 import { eq } from 'drizzle-orm';
-import type { Joke, SaveJokeRequest } from '@portfolio/shared';
+import type { Joke, SaveJokeRequest, UpdateJokeRequest } from '@portfolio/shared';
 
 const router = Router();
 
@@ -71,6 +71,34 @@ router.post('/', async (req, res) => {
     }
 });
 
+
+// update a joke
+router.put('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { content }: UpdateJokeRequest = req.body;
+        
+        if (!content) {
+            return res.status(400).json({ error: 'Content is required' });
+        }
+
+        const updatedJoke = await db.update(jokes)
+            .set({ 
+                content,
+                updatedAt: new Date()
+            })
+            .where(eq(jokes.id, Number(id)))
+            .returning();
+
+        if (updatedJoke.length === 0) {
+            return res.status(404).json({ error: 'Joke not found' });
+        }
+
+        res.json(updatedJoke[0]);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to update joke' });
+    }
+});
 
 // deletin
 router.delete('/:id', async (req, res) => {

@@ -1,16 +1,5 @@
 import ReactMarkdown from 'react-markdown';
 
-const resumePageStyle = {
-    width: '90vw',
-    maxWidth: '900px',
-    backgroundColor: 'rgba(0, 20, 40, 0.9)',
-    color: 'white',
-    margin: '2rem auto',
-    padding: '1rem',
-    borderRadius: '12px',
-    lineHeight: 1.7,
-};
-
 const resumeContent = `
 # Brayden Yancy
 
@@ -119,19 +108,71 @@ const Resume = () => {
     return (
         <div className="resumeDiv" style={{
             pointerEvents: 'auto',
-            // paddingBottom: '4rem',
-            marginTop: '4rem',
+            marginTop: '6rem',
+            width: '90vw',
+            maxWidth: '900px',
+            margin: '2rem auto',
         }}>
-            <div style={resumePageStyle}>
+            <div className="terminal" style={{
+                padding: '2rem',
+            }}>
+                <div className="scanline"></div>
                 <ReactMarkdown
                     components={{
-                        h1: ({children}) => <h1 style={{ color: '#00d4d4', marginBottom: '0.5rem' }}>{children}</h1>,
-                        h2: ({children}) => <h2 style={{ color: '#00d4d4', marginTop: '2rem', borderBottom: '1px solid rgba(0, 212, 212, 0.3)', paddingBottom: '0.5rem' }}>{children}</h2>,
-                        h3: ({children}) => <h3 style={{ color: 'white', marginBottom: '0.25rem' }}>{children}</h3>,
-                        hr: () => <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.2)', margin: '1.5rem 0' }} />,
-                        a: ({href, children}) => <a href={href} style={{ color: '#00d4d4' }} target="_blank" rel="noopener noreferrer">{children}</a>,
-                        li: ({children}) => <li style={{ marginBottom: '0.5rem' }}>{children}</li>,
-                        strong: ({children}) => <strong style={{ color: '#00d4d4' }}>{children}</strong>,
+                        h1: ({children}) => <h1 style={{ 
+                            color: '#00dd00', 
+                            marginBottom: '0.5rem',
+                            fontSize: '2.5rem',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.1em',
+                            textShadow: '0 0 10px #00dd00'
+                        }}>{children}</h1>,
+                        h2: ({children}) => <h2 style={{ 
+                            color: '#00dd00', 
+                            marginTop: '2rem', 
+                            borderLeft: '4px solid #00d4d4',
+                            paddingLeft: '1rem',
+                            paddingBottom: '0.5rem',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.05em'
+                        }}>{children}</h2>,
+                        h3: ({children}) => <h3 style={{ 
+                            color: '#00dd00', 
+                            marginBottom: '0.25rem',
+                            marginTop: '1.5rem'
+                        }}>{children}</h3>,
+                        hr: () => <hr style={{ 
+                            border: 'none', 
+                            borderTop: '2px solid #00dd00', 
+                            margin: '1.5rem 0',
+                            opacity: 0.3
+                        }} />,
+                        a: ({href, children}) => <a 
+                            href={href} 
+                            style={{ 
+                                color: '#00dd00',
+                                textDecoration: 'none',
+                                borderBottom: '1px solid #00dd00'
+                            }} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                        >{children}</a>,
+                        li: ({children}) => <li style={{ 
+                            marginBottom: '0.5rem',
+                            lineHeight: '1.6'
+                        }}>{children}</li>,
+                        strong: ({children}) => <strong style={{ 
+                            color: '#00dd00',
+                            fontWeight: 'bold'
+                        }}>{children}</strong>,
+                        p: ({children}) => <p style={{
+                            lineHeight: '1.7',
+                            marginBottom: '1rem'
+                        }}>{children}</p>,
+                        em: ({children}) => <em style={{
+                            color: '#00dd00',
+                            opacity: 0.9
+                        }}>{children}</em>,
                     }}
                 >
                     {resumeContent}

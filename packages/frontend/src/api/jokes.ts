@@ -1,4 +1,4 @@
-import { Joke, SavedJoke, SaveJokeRequest } from '@portfolio/shared/types.ts';
+import { Joke, SavedJoke, SaveJokeRequest, UpdateJokeRequest } from '@portfolio/shared/types.ts';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -21,6 +21,18 @@ export const saveJoke = async (joke: SaveJokeRequest): Promise<SavedJoke> => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(joke)
     });
+    return res.json();
+};
+
+export const updateJoke = async (id: number, updates: UpdateJokeRequest): Promise<SavedJoke> => {
+    const res = await fetch(`${API_URL}/api/jokes/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updates)
+    });
+    if (!res.ok) {
+        throw new Error('Failed to update joke');
+    }
     return res.json();
 };
 
