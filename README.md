@@ -8,7 +8,7 @@ My personal portfolio site. React + Three.js frontend, Express backend, Drizzle 
 
 Quit docker terminal by pressing
 
-`q`
+`ctrl+c` or `q`
 
 # Stop with
 `docker-compose down `
