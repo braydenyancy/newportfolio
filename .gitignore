@@ -15,6 +15,32 @@ dist
 dist-ssr
 *.local
 
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+.npmrc
+.pypirc
+.python-version
+.envrc
+.direnv/
+secrets/
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.cer
+*.der
+*.jks
+*.keystore
+*.kdbx
+*.sqlite
+*.sqlite3
+*.db
+*.bak
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
