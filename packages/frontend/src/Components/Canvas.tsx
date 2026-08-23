@@ -142,7 +142,7 @@ const Canvas = () => {
 
         const toiletPaperLoader = new GLTFLoader();
 
-        toiletPaperLoader.load('/assets/models/toilet_paper_dispenser/scene.gltf',
+        toiletPaperLoader.load(`${import.meta.env.BASE_URL}assets/models/toilet_paper_dispenser/scene.gltf`,
             (gltf) => {
                 toiletPaperModel = gltf.scene;
                 // x, y, z position
@@ -167,7 +167,7 @@ const Canvas = () => {
 
         const reactLogoLoader = new GLTFLoader();
 
-        reactLogoLoader.load('/assets/models/react_logo/scene.gltf',
+        reactLogoLoader.load(`${import.meta.env.BASE_URL}assets/models/react_logo/scene.gltf`,
             (gltf) => {
                 reactLogoModel = gltf.scene;
 
