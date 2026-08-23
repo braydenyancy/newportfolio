@@ -4,7 +4,7 @@ import { fetchRandomJoke, getSavedJokes, saveJoke, deleteJoke, updateJoke } from
 import { Joke, SavedJoke } from "@portfolio/shared/types.ts";
 
 
-const Jokes = () => {
+const Jokes = ({ onApiUnavailable }: { onApiUnavailable?: () => void }) => {
 
     const [dadJoke, setDadJoke] = useState<Joke | null>(null);
     const [savedJokes, setSavedJokes] = useState<SavedJoke[]>([]);
@@ -67,8 +67,16 @@ const Jokes = () => {
     }
 
     useEffect(() => {
-        fetchJoke()
-        fetchSavedJokes()
+        fetchRandomJoke()
+            .then((data) => {
+                setDadJoke(data);
+                fetchSavedJokes();
+            })
+            .catch((error) => {
+                console.error('Jokes API unreachable, hiding demo:', error);
+                onApiUnavailable?.();
+            });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

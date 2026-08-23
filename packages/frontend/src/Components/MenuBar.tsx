@@ -1,12 +1,13 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import ArticleIcon from '@mui/icons-material/Article';
+import FolderSpecialIcon from '@mui/icons-material/FolderSpecial';
 import { Tooltip } from '@mui/material';
 
 const MenuBar = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const isResumePage = location.pathname === '/resume';
+    const isHomePage = location.pathname === '/';
 
 
     return (
@@ -20,7 +21,14 @@ const MenuBar = () => {
             // borderBottom: 'solid 1px white',
             // opacity: '0.75',
         }}>
-            {isResumePage ? (
+            {isHomePage ? (
+                <div>
+                    <p style={{
+                        color: 'white',
+                        marginLeft: '2rem',
+                    }}>Welcome to my new React x Three.js Portfolio</p>
+                </div>
+            ) : (
                 <div style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -31,23 +39,30 @@ const MenuBar = () => {
                         cursor: 'pointer',
                     }}>Return home</p>
                 </div>
-            ) : (
-                <div>
-                    <p style={{
-                        color: 'white',
-                        marginLeft: '2rem',
-                    }}>Welcome to my new React x Three.js Portfolio</p>
-                </div>
             )}
 
-            <Tooltip title="Click to see latest resume" arrow>
-                <ArticleIcon onClick={() => navigate('resume')} style={{
-                    color: 'white',
-                    marginRight: '2rem',
-                    cursor: 'pointer',
-                    fontSize: '2rem',
-                }} />
-            </Tooltip>
+            <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1.5rem',
+                marginRight: '2rem',
+            }}>
+                <Tooltip title="Click to browse project archives" arrow>
+                    <FolderSpecialIcon onClick={() => navigate('projects')} style={{
+                        color: 'white',
+                        cursor: 'pointer',
+                        fontSize: '2rem',
+                    }} />
+                </Tooltip>
+
+                <Tooltip title="Click to see latest resume" arrow>
+                    <ArticleIcon onClick={() => navigate('resume')} style={{
+                        color: 'white',
+                        cursor: 'pointer',
+                        fontSize: '2rem',
+                    }} />
+                </Tooltip>
+            </div>
         </div>
     )
 }

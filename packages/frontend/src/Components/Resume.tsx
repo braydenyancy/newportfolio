@@ -13,6 +13,14 @@ const resumeContent = `
 
 ## Professional Experience
 
+### Full-Stack Engineer | DFW Airport
+**March 2026 - September 2026**
+
+- Engineered a containerized application health monitoring dashboard using React, Vite, Three.js, FastAPI, SQL, and Redis, providing teams visibility into the status of internal applications and Azure-hosted resources; integrated the platform with GitHub Actions and architect-managed Terraform infrastructure for automated Azure deployments.
+- Developed an interactive ArcGIS/ESRI operational reporting tool that enabled airport teams to map and update road closures, traffic disruptions, and construction activity using GIS layers, replacing a slower manual workflow for producing and distributing daily reports.
+- Delivered full-stack enhancements to AWARE, an operational dashboard used by airport leadership for business decision-making, including React UI development and FastAPI services integrating parking data from Redis alongside Waze and BriefCam operational data.
+- Refactored AWARE's traffic volume and speed analytics experience, redesigning data visualizations and integrating BriefCam imagery to improve the usability and consumption of operational traffic data; also prepared Skylink visualization layers for future data integration.
+
 ### UI Developer | PACCAR
 **March 2024 - November 2025**
 

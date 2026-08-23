@@ -5,6 +5,9 @@ import { useEffect, useState } from 'react';
 const Content = () => {
 
     const [crypticText, setCrypticText] = useState('████████');
+    // The jokes demo needs the backend; hide it entirely on static
+    // deploys (no VITE_API_URL) or when the API is unreachable.
+    const [jokesAvailable, setJokesAvailable] = useState(!!import.meta.env.VITE_API_URL);
 
     useEffect(() => {
         const chars = '█▓▒░▀▄■┼┤┴├─│╬╔╗╚╝╠╣╦╩';
@@ -80,9 +83,11 @@ const Content = () => {
                 </div>
             </section>
 
-            <section className='dad-joke' style={getSectionStyle('6 / 12')}>
-                <Jokes />
-            </section>
+            {jokesAvailable && (
+                <section className='dad-joke' style={getSectionStyle('6 / 12')}>
+                    <Jokes onApiUnavailable={() => setJokesAvailable(false)} />
+                </section>
+            )}
 
         </div>
     )

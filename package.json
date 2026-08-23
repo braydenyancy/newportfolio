@@ -10,5 +10,5 @@
 		"db:migrate": "pnpm --filter @portfolio/backend db:migrate",
 		"db:seed": "pnpm --filter @portfolio/backend db:seed",
 		"db:reset": "pnpm --filter @portfolio/backend db:reset"
-  }
+	}
 }
