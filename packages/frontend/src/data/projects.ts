@@ -1,7 +1,7 @@
 import { Project } from '@portfolio/shared/types.ts';
 
-// PLACEHOLDER copy for Centrail and Avesa — swap description/tagline/tech
-// for the real thing once written.
+// Centrail and Avesa run in-theme classified warnings until real copy
+// is written — swap description/tech when ready.
 const projects: Project[] = [
     {
         id: 'centrail',
@@ -9,10 +9,12 @@ const projects: Project[] = [
         name: 'CENTRAIL',
         tagline: 'Live at centrail.org',
         description:
-            '[PLACEHOLDER] Description pending declassification. ' +
-            'Replace this with what Centrail does, the problem it solves, ' +
-            'and the interesting engineering behind it.',
-        tech: ['React', 'TypeScript'],
+            '⚠ WARNING: This dossier is sealed under Directive 7-C. ' +
+            'All intelligence regarding Operation CENTRAIL — its purpose, capabilities, ' +
+            'and underlying technology — remains CLASSIFIED. Unauthorized disclosure is ' +
+            'punishable by ████████. Cleared visitors may access the live site below. ' +
+            'You were never here.',
+        tech: ['████████', '[REDACTED]', 'CLASSIFIED'],
         status: 'LIVE',
         liveUrl: 'https://centrail.org',
         featured: true,
@@ -23,9 +25,12 @@ const projects: Project[] = [
         name: 'AVESA',
         tagline: 'Live at avesa.online',
         description:
-            '[PLACEHOLDER] Description pending declassification. ' +
-            'Replace this with what Avesa does and the stack powering it.',
-        tech: ['React', 'TypeScript'],
+            '⚠ WARNING: The following record has been redacted by order of ████████. ' +
+            'Project AVESA is operational, but its mission parameters and system ' +
+            'architecture are CLASSIFIED — EYES ONLY. Proceed to the live site strictly ' +
+            'on a need-to-know basis. This message will not self-destruct, but it ' +
+            'reserves the right to.',
+        tech: ['[REDACTED]', 'CLASSIFIED', '████████'],
         status: 'LIVE',
         liveUrl: 'https://avesa.online',
         featured: true,
