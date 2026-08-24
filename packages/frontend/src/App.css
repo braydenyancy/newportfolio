@@ -2,6 +2,8 @@
 body {
     margin: 0;
     overflow: hidden;
+    /* Stop iOS Safari from rubber-banding the body instead of the inner scroller */
+    overscroll-behavior: none;
     /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
     font-family: 'Inconsolata', monospace;
 }
@@ -10,6 +12,8 @@ body {
     position: fixed;
     width: 100vw;
     height: 100vh;
+    /* dvh tracks iOS Safari's collapsing toolbar; vh above is the fallback */
+    height: 100dvh;
 }
 
 .menubarDiv {
@@ -27,6 +31,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     z-index: 0;
 }
 
@@ -35,9 +40,12 @@ body {
     top: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     z-index: 1;
     overflow-y: auto;
     overflow-x: hidden;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     pointer-events: none;
 }
 
