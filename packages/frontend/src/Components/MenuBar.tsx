@@ -41,7 +41,7 @@ const MenuBar = () => {
                 </div>
             )}
 
-            <div style={{
+            <div className="menu-icons" style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: '1.5rem',

@@ -36,8 +36,8 @@ const Content = () => {
                 }}>
                     <div className="scanline"></div>
                     <h1 style={{
-                        fontSize: '6rem',
-                        padding: '0.5rem 4rem',
+                        fontSize: 'clamp(3rem, 12vw, 6rem)',
+                        padding: '0.5rem clamp(0.5rem, 5vw, 4rem)',
                         animation: 'slideIn 2s ease-out forwards',
                     }}>YANCY</h1>
                     <p>NOTE: This top secret documentation contains hazardous information, read at your own risk</p>

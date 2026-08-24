@@ -36,7 +36,8 @@ body {
     width: 100vw;
     height: 100vh;
     z-index: 1;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     pointer-events: none;
 }
 
@@ -221,10 +222,23 @@ p {
 @media (max-width: 1024px) {
     .contentDiv {
         gap: 0;
+        padding: 1rem;
     }
-    
+
     .contentDiv section {
         grid-column: 1 / -1 !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .menuItemsDiv p {
+        font-size: 14px;
+        margin-left: 1rem !important;
+    }
+
+    .menuItemsDiv .menu-icons {
+        gap: 1rem !important;
+        margin-right: 1rem !important;
     }
 }
 
