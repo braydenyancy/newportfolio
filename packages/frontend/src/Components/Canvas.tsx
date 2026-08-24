@@ -196,7 +196,6 @@ const Canvas = () => {
                 start: "top top",
                 end: "bottom+=3000 top",
                 scrub: 1,
-                scroller: '.outletDiv',
                 // markers: true,
             }
         });
@@ -279,8 +278,7 @@ const Canvas = () => {
         <>
             <div ref={canvasRef} style={{
                 position: 'absolute',
-                width: '100vw',
-                height: '100vh'
+                inset: 0,
             }}>
             </div>
         </>
